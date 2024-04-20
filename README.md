@@ -1,11 +1,10 @@
-#### Instructions to run the project
+**Command to run the project** - docker-compose up --build
 
-docker-compose up --build
-
-################################
+###
 
 To communicate between the claimProcess service and the payments service, we can use a messaging system such as a message queue. Here's a pseudocode example illustrating how they could communicate:
 
+```
 # claimProcess service
 
 # After computing the net fee for a claim
@@ -17,18 +16,18 @@ message_queue.publish("payments_queue", net_fee)
 # Log the successful publication of the net fee
 logger.info("Net fee published to payments queue: %s", net_fee)
 
-
 # payments service
 
-# Consume net fees from the message queue
+// Consume net fees from the message queue
 while True:
     net_fee = message_queue.consume("payments_queue")
     
-    # Process the net fee (e.g., initiate payment to the provider)
+    // Process the net fee (e.g., initiate payment to the provider)
     process_payment(net_fee)
 
-    # Log successful payment processing
+    // Log successful payment processing
     logger.info("Payment processed successfully for net fee: %s", net_fee)
+```
 
 In this setup:
 
