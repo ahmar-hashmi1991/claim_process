@@ -1,0 +1,7 @@
+fastapi==0.110.2
+pydantic==2.7.0
+sqlmodel[postgresql]==0.0.16
+uvicorn
+psycopg2>=2.8
+pytest
+httpx
